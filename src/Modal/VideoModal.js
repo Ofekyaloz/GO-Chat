@@ -11,13 +11,14 @@ function VideoModal({handelAddMessage}) {
         const fileName = document.getElementById("add-file-video").value;
         const idxDot = fileName.lastIndexOf(".") + 1;
         const extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+
+        // checking the file's type
         if (extFile === "video" || extFile === "mp4" || extFile === "x-m4v" || extFile === "mp3") {
             const media = URL.createObjectURL(video.current.files[0]);
             handelAddMessage(new Message(<video className="Chat-Video" controls>
                 <source className="Chat-Video" src={media} type="video/mp4"/>
             </video>, true, new Date(), "video"));
         }
-
         Close();
     };
 
@@ -56,6 +57,6 @@ function VideoModal({handelAddMessage}) {
             </div>
         </div>
     );
-};
+}
 
 export default VideoModal;
